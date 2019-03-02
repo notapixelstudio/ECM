@@ -2,8 +2,8 @@ extends Node
 
 func find_base_entity(node : Node) -> Entity:
 	"""
-	  Finds the nearest ancestor for the given node having an Entity subnode and returns it (it must be
-	  named 'Entity' and also extend the Entity class). Returns null if no such node is found.
+	  Finds the nearest ancestor for the given node having an Entity subnode and returns it (if there are
+	  more than one, the first is returned). Returns null if no such node is found.
 	"""
 	if not node:
 		return null
@@ -11,9 +11,9 @@ func find_base_entity(node : Node) -> Entity:
 	if node == get_tree().root:
 		return null
 		
-	if node.has_node('Entity') and node.get_node('Entity') is Entity:
-		var result : Entity = node.get_node('Entity')
-		return result
+	for child in node.get_children():
+		if child is Entity:
+			return child
 		
 	return find_base_entity(node.get_parent())
 	
