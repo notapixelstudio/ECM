@@ -1,6 +1,6 @@
 extends Node
 
-func find_base_entity(node : Node) -> Entity:
+func E(node : Node) -> Entity:
 	"""
 	  Finds the nearest ancestor for the given node having an Entity subnode and returns it (if there are
 	  more than one, the first is returned). Returns null if no such node is found.
@@ -15,5 +15,5 @@ func find_base_entity(node : Node) -> Entity:
 		if child is Entity:
 			return child
 		
-	return find_base_entity(node.get_parent())
+	return E(node.get_parent())
 	
