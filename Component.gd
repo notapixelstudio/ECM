@@ -19,3 +19,9 @@ func toggle_enabled():
 func is_enabled() -> bool:
 	return enabled
 	
+func get_entity():
+	return get_parent()
+	
+func get_host():
+	return get_entity().get_host()
+	
