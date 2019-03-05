@@ -1,4 +1,4 @@
-extends Node
+ùextends Node
 
 class_name Entity
 
@@ -7,9 +7,11 @@ func get_host():
 	return get_parent()
 	
 func has(component_name : String) -> bool:
-	return has_node(component_name) and get_node(component_name).is_enabled()
+	return could_have(component_name) and get_node(component_name).is_enabled()
 	
 func get(component_name : String) -> Component:
 	var result : Component = get_node(component_name)
 	return result
 	
+func could_have(component_name : String) -> bool:
+	return has_node(component_name)
